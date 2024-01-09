@@ -2,6 +2,7 @@ package com.alana.Springbootmongodb.controller;
 
 import com.alana.Springbootmongodb.model.Expense;
 import com.alana.Springbootmongodb.service.ExpenseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/expense")
+@RequestMapping("/expense")
+
 public class ExpenseController {
     private final ExpenseService expenseService;
 
@@ -18,14 +20,14 @@ public class ExpenseController {
     }
 
     @PostMapping
-    public ResponseEntity addExpense(@RequestBody Expense expense){
+    public ResponseEntity addExpense(@RequestBody Expense expense) {
         expenseService.addExpense(expense);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
     @PutMapping
-    public ResponseEntity updateExpense(@RequestBody Expense expense){
+    public ResponseEntity updateExpense(@RequestBody Expense expense) {
         expenseService.updateExpense(expense);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
     @GetMapping
     public ResponseEntity<List<Expense>> getAllExpenses(){

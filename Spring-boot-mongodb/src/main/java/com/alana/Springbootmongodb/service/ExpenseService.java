@@ -2,11 +2,15 @@ package com.alana.Springbootmongodb.service;
 
 import com.alana.Springbootmongodb.model.Expense;
 import com.alana.Springbootmongodb.repository.ExpenseRepository;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ExpenseService {
 
     private final ExpenseRepository expenseRepository;
